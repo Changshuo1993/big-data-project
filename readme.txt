@@ -4,13 +4,17 @@ We use the naivebayes, modified-bayes, and decision-tree classification algorith
 analyze the relation between different variables. 
 
 B. Development Environment
-PYTHON 2.7.10
+PYTHON 2.7.10 
 
 C Instructions
 In order to run the program, you just need to put the dataset and the python file you want to run in the same working location, and the run it. 
 Example:
-python bayes.py
-python decisiontree.py
+1.python bayes.py variable class_label
+python bayes.py zip day
+2.python bayesreason.py variable class_label
+python bayesreason.py type reason
+3.python decisiontree.py variable class_label
+python decisiontree.py reason area
 
 D：Dataset
 Since the dataset is too large to upload, you can down load the dataset here.
