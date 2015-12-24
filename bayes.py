@@ -1,8 +1,11 @@
 import csv
 import random
 import math
+import sys
 
-print('hello')
+print(' ')
+print('            Bigdata final project')
+print('################### Decision Tree ###################')
 
 
 def loadcsv(filename):
@@ -113,13 +116,17 @@ def loadcsv(filename):
                 reason = float(20)
             else:
                 reason = float(21)
-            dataset.append([zip,day])
+ #           if reason!=0:
+ #               if day==0:
+ #                   night+=1
+  #              elif day==1:
+   #                 busy+=1
+    #            else:
+     #               other+=1
+      #          total+=1
+            if sys.argv[1] == 'zip' and sys.argv[2] == 'day':
+                dataset.append([zip,day])
     total=night+busy+other
-    print(night)
-    print(busy)
-    print(other)
-    print(total)
-
     Ck1=night/(total*1.0)
     Ck2=busy/(total*1.0)
     Ck3=other/(total*1.0)
@@ -167,20 +174,31 @@ def stdev(numbers):
 
 
 def summarize(dataset):
+    #print dataset
+    #print len(dataset)
     summaries = [(mean(attribute), stdev(attribute)) for attribute in zip(*dataset)]
     del summaries[-1]
+    #print summaries
     return summaries
 
 
 def summarizeByClass(dataset):
+    #print len(dataset)
     separated = separateByClass(dataset)
     summaries = {}
+    #print len(separated)
     for classValue, instances in separated.iteritems():
         summaries[classValue] = summarize(instances)
+        # print "I am here"
+        #print classValue, instances
+        #print('classvalue {0}:{1}').format(classValue,summaries[classValue])
     return summaries
 
 
 def calculateProbability(x, mean, stdev):
+    # x = float(x)
+    # mean = float(mean)
+    # stdev = float(stdev)
     exponent = math.exp(-(math.pow(x - mean, 2) / (2 * math.pow(stdev, 2))))
     return (1 / (math.sqrt(2 * math.pi) * stdev)) * exponent
 
@@ -195,6 +213,11 @@ def calculateClassProbabilities(summaries, inputVector,ckpro):
             x = inputVector[i]
             probabilities[classValue] *= calculateProbability(x, mean, stdev)
     return probabilities
+
+#def calcckposibility(summaries, classValue):
+    #ckposibility = len(summaries[classValue])/len(summaries)
+    #print(ckposibility)
+    #return ckposibility
 
 def predict(summaries, inputVector, ckpro):
     probabilities = calculateClassProbabilities(summaries, inputVector, ckpro)
@@ -223,9 +246,10 @@ def getAccuracy(testSet, predictions):
 
 def main():
     filename = 'NYPD_Motor_Vehicle_Collisions.csv'
+    # filename = 'try.csv'
     splitRatio = 0.67
     dataset, ckpro = loadcsv(filename)
-    print(ckpro)
+    #print(ckpro)
     trainingSet, testSet = splitdataset(dataset, splitRatio)
     print('Split {0} rows into train={1} and test={2} rows').format(len(dataset), len(trainingSet), len(testSet))
     # prepare model
@@ -234,9 +258,12 @@ def main():
     # test model
     predictions = getPredictions(summaries, testSet, ckpro)
     accuracy = getAccuracy(testSet, predictions)
-    print("input_variable:zip")
-    print("Lable:time")
-    print('Accuracy: {0}%').format(accuracy)
+    print('--> Input_variable:{0}').format(sys.argv[1])
+    print('--> Lable:{0}').format(sys.argv[2])
+    print('-- Accuracy: {0}% --').format(accuracy)
+    print('################### Decision Tree ###################')
+    print(' ')
+
 
 
 main()
