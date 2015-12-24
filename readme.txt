@@ -15,6 +15,7 @@ python bayes.py zip day
 python bayesreason.py type reason
 3.python decisiontree.py variable class_label
 python decisiontree.py reason area
+4.python modifiedbayes.py
 
 D：Dataset
 Since the dataset is too large to upload, you can down load the dataset here.
