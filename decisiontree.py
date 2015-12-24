@@ -8,8 +8,12 @@ from sklearn import tree
 from sklearn.metrics import precision_recall_curve
 from sklearn.metrics import classification_report
 from sklearn.cross_validation import train_test_split
+import sys
 
-print('hello')
+print(' ')
+print('            Bigdata final project')
+print('################### Decision Tree ###################')
+
 
 def loadcsv(filename):
     dataset = []
@@ -19,7 +23,16 @@ def loadcsv(filename):
         if info[2].strip() != '':
             time = info[1].split(":")
             hour = int(time[0])
-            day = int(hour/12)
+            if (hour >22) or (hour <4):
+                day = int(0)
+            elif (8< hour <=10) or (16<= hour <22):
+                day = int(1)
+            else:
+                day = int(2)
+            if (info[3]!=''):
+                zip = int(int(info[3])/10)
+            else:
+                zip = 1111
             if info[2] == 'QUEENS':
                 area = float(0)
             elif info[2] == 'MANHATTAN':
@@ -104,8 +117,35 @@ def loadcsv(filename):
                 reason = float(20)
             else:
                 reason = float(21)
-            dataset.append(reason)
-            labels.append(area)
+            if sys.argv[1] == 'reason' and sys.argv[2] == 'area':
+               if (reason!=float(0)) and (area!=int(5)) and (type!=float(8)):
+                  dataset.append(reason)
+                  labels.append(area)
+            if sys.argv[1] == 'reason' and sys.argv[2] == 'day':
+                if (reason!=float(0)) and (area!=int(5)) and (type!=float(8)):
+                    dataset.append(reason)
+                    labels.append(day)
+            if sys.argv[1] == 'zip' and sys.argv[2] == 'day':
+                if (reason!=float(0)) and (area!=int(5)) and (type!=float(8)):
+                    dataset.append(zip)
+                    labels.append(day)
+            if sys.argv[1] == 'area' and sys.argv[2] == 'day':
+                if (reason!=float(0)) and (area!=int(5)) and (type!=float(8)):
+                    dataset.append(area)
+                    labels.append(day)
+            if sys.argv[1] == 'type' and sys.argv[2] == 'area':
+                if (reason!=float(0)) and (area!=int(5)) and (type!=float(8)):
+                    dataset.append(type)
+                    labels.append(area)
+            if sys.argv[1] == 'type' and sys.argv[2] == 'reason':
+                if (reason!=float(0)) and (area!=int(5)) and (type!=float(8)):
+                    dataset.append(type)
+                    labels.append(reason)
+            if sys.argv[1] == 'reason' and sys.argv[2] == 'type':
+                if (reason!=float(0)) and (area!=int(5)) and (type!=float(8)):
+                    dataset.append(reason)
+                    labels.append(type)
+
     return dataset,labels
 
 def main():
@@ -117,18 +157,27 @@ def main():
     clf = tree.DecisionTreeClassifier(criterion='entropy')
     print(clf)
     x_train=x_train.astype(float)
-    x_train=np.resize(x_train,(423162,1))
+    x_train=np.resize(x_train,(len(x_train),1))
+    print('--> Input_variable:{0}').format(sys.argv[1])
+    print('--> Lable:{0}').format(sys.argv[2])
+    print("train_input")
+    print(x_train)
+    print("train_classvalue")
+    print(y_train)
     clf.fit(x_train, y_train)
     with open("tree.dot", 'w') as f:
         f= tree.export_graphviz(clf, out_file=f)
-    print(clf.feature_importances_)
     answer = clf.predict(x_train)
+    print("predic_classvalue")
     print(answer)
-    print(np.mean(answer == y_train))
+    print('Accuracy: {0}%').format(np.mean(answer == y_train)*100)
+    #precision, recall, thresholds = precision_recall_curve(y_train, clf.predict(x_train))
     x=x.astype(float)
-    x=np.resize(x,(528953,1))
+    x=np.resize(x,(len(x),1))
     answer = clf.predict_proba(x)
-    print('############')
-    print(answer)
+    print('################### Decision Tree ###################')
+    print(' ')
+
+
 
 main()
