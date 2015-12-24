@@ -1,9 +1,11 @@
 import csv
 import random
 import math
+import sys
 
-print('hello')
-
+print(' ')
+print('            Bigdata final project')
+print('################### Decision Tree ###################')
 
 def loadcsv(filename):
     dataset = []
@@ -35,6 +37,7 @@ def loadcsv(filename):
     T20=0
     T21=0
     total =0
+    ckpro = []
     for line in open(filename):
         info = line.split(",")
         if info[2].strip() != '':
@@ -134,7 +137,8 @@ def loadcsv(filename):
                 reason = float(20)
             else:
                 reason = float(21)
-            if type != 8:
+            if sys.argv[1] == 'type' and sys.argv[2] == 'reason':
+              if type != 8:
                 if reason==0:
                     T0+=1
                 elif reason==1:
@@ -180,55 +184,141 @@ def loadcsv(filename):
                 else:
                     T21+=1
                 total+=1
-                dataset.append([type,reason])
+                dataset.append([type, reason])
 
-    Ck0=T0/(total*1.0)
-    Ck1=T1/(total*1.0)
-    Ck2=T2/(total*1.0)
-    Ck3=T3/(total*1.0)
-    Ck4=T4/(total*1.0)
-    Ck5=T5/(total*1.0)
-    Ck6=T6/(total*1.0)
-    Ck7=T7/(total*1.0)
-    Ck8=T8/(total*1.0)
-    Ck9=T9/(total*1.0)
-    Ck10=T10/(total*1.0)
-    Ck11=T11/(total*1.0)
-    Ck12=T12/(total*1.0)
-    Ck13=T13/(total*1.0)
-    Ck14=T14/(total*1.0)
-    Ck15=T15/(total*1.0)
-    Ck16=T16/(total*1.0)
-    Ck17=T17/(total*1.0)
-    Ck18=T18/(total*1.0)
-    Ck19=T19/(total*1.0)
-    Ck20=T20/(total*1.0)
-    Ck21=T21/(total*1.0)
+                Ck0=T0/(total*1.0)
+                Ck1=T1/(total*1.0)
+                Ck2=T2/(total*1.0)
+                Ck3=T3/(total*1.0)
+                Ck4=T4/(total*1.0)
+                Ck5=T5/(total*1.0)
+                Ck6=T6/(total*1.0)
+                Ck7=T7/(total*1.0)
+                Ck8=T8/(total*1.0)
+                Ck9=T9/(total*1.0)
+                Ck10=T10/(total*1.0)
+                Ck11=T11/(total*1.0)
+                Ck12=T12/(total*1.0)
+                Ck13=T13/(total*1.0)
+                Ck14=T14/(total*1.0)
+                Ck15=T15/(total*1.0)
+                Ck16=T16/(total*1.0)
+                Ck17=T17/(total*1.0)
+                Ck18=T18/(total*1.0)
+                Ck19=T19/(total*1.0)
+                Ck20=T20/(total*1.0)
+                Ck21=T21/(total*1.0)
 
-    ckpro = []
-    ckpro.append(float(Ck0))
-    ckpro.append(float(Ck1))
-    ckpro.append(float(Ck2))
-    ckpro.append(float(Ck3))
-    ckpro.append(float(Ck4))
-    ckpro.append(float(Ck5))
-    ckpro.append(float(Ck6))
-    ckpro.append(float(Ck7))
-    ckpro.append(float(Ck8))
-    ckpro.append(float(Ck9))
-    ckpro.append(float(Ck10))
-    ckpro.append(float(Ck11))
-    ckpro.append(float(Ck12))
-    ckpro.append(float(Ck13))
-    ckpro.append(float(Ck14))
-    ckpro.append(float(Ck15))
-    ckpro.append(float(Ck16))
-    ckpro.append(float(Ck17))
-    ckpro.append(float(Ck18))
-    ckpro.append(float(Ck19))
-    ckpro.append(float(Ck20))
-    ckpro.append(float(Ck21))
-    # print dataset
+                ckpro.append(float(Ck0))
+                ckpro.append(float(Ck1))
+                ckpro.append(float(Ck2))
+                ckpro.append(float(Ck3))
+                ckpro.append(float(Ck4))
+                ckpro.append(float(Ck5))
+                ckpro.append(float(Ck6))
+                ckpro.append(float(Ck7))
+                ckpro.append(float(Ck8))
+                ckpro.append(float(Ck9))
+                ckpro.append(float(Ck10))
+                ckpro.append(float(Ck11))
+                ckpro.append(float(Ck12))
+                ckpro.append(float(Ck13))
+                ckpro.append(float(Ck14))
+                ckpro.append(float(Ck15))
+                ckpro.append(float(Ck16))
+                ckpro.append(float(Ck17))
+                ckpro.append(float(Ck18))
+                ckpro.append(float(Ck19))
+                ckpro.append(float(Ck20))
+                ckpro.append(float(Ck21))
+
+            if sys.argv[1] == 'reason' and sys.argv[2] == 'area':
+              if reason!=0:
+                if area==0:
+                    queens+=1
+                elif area==1:
+                    maha+=1
+                elif area==2:
+                    bronx+=1
+                elif area==3:
+                    si+=1
+                else:
+                    broo+=1
+                total+=1
+                dataset.append([reason,area])
+
+                Ck0=queens/(total*1.0)
+                Ck1=maha/(total*1.0)
+                Ck2=bronx/(total*1.0)
+                Ck3=si/(total*1.0)
+                Ck4=broo/(total*1.0)
+
+                ckpro.append(float(Ck0))
+                ckpro.append(float(Ck1))
+                ckpro.append(float(Ck2))
+                ckpro.append(float(Ck3))
+                ckpro.append(float(Ck4))
+
+
+            if sys.argv[1] == 'reason' and sys.argv[2] == 'type':
+                if type==0:
+                  T1+=1
+                elif type==2:
+                    T2+=1
+                elif type==3:
+                    T3+=1
+                elif type==4:
+                    T4+=1
+                elif type==5:
+                    T5+=1
+                elif type==6:
+                    T6+=1
+                elif type==7:
+                    T7+=1
+                elif type==8:
+                    T8+=1
+                elif type==9:
+                    T9+=1
+                elif type==10:
+                    T10+=1
+                elif type==11:
+                    T11+=1
+                elif type==12:
+                    T12+=1
+                else:
+                    T13+=1
+                total+=1
+                dataset.append([reason,type])
+
+                Ck0=T0/(total*1.0)
+                Ck1=T1/(total*1.0)
+                Ck2=T2/(total*1.0)
+                Ck3=T3/(total*1.0)
+                Ck4=T4/(total*1.0)
+                Ck5=T5/(total*1.0)
+                Ck6=T6/(total*1.0)
+                Ck7=T7/(total*1.0)
+                Ck8=T8/(total*1.0)
+                Ck9=T9/(total*1.0)
+                Ck10=T10/(total*1.0)
+                Ck11=T11/(total*1.0)
+                Ck12=T12/(total*1.0)
+                Ck13=T13/(total*1.0)
+
+                ckpro.append(float(Ck0))
+                ckpro.append(float(Ck1))
+                ckpro.append(float(Ck2))
+                ckpro.append(float(Ck3))
+                ckpro.append(float(Ck4))
+                ckpro.append(float(Ck5))
+                ckpro.append(float(Ck6))
+                ckpro.append(float(Ck7))
+                ckpro.append(float(Ck8))
+                ckpro.append(float(Ck9))
+                ckpro.append(float(Ck10))
+                ckpro.append(float(Ck11))
+                ckpro.append(float(Ck12))
+                ckpro.append(float(Ck13))
     return [dataset,ckpro]
 
 def splitdataset(dataset, splitRatio):
@@ -306,6 +396,11 @@ def calculateClassProbabilities(summaries, inputVector,ckpro):
             probabilities[classValue] *= calculateProbability(x, mean, stdev)
     return probabilities
 
+#def calcckposibility(summaries, classValue):
+    #ckposibility = len(summaries[classValue])/len(summaries)
+    #print(ckposibility)
+    #return ckposibility
+
 def predict(summaries, inputVector, ckpro):
     probabilities = calculateClassProbabilities(summaries, inputVector, ckpro)
     bestLabel, bestProb = None, -1
@@ -336,7 +431,7 @@ def main():
     # filename = 'try.csv'
     splitRatio = 0.67
     dataset, ckpro = loadcsv(filename)
-    print(ckpro)
+    #print(ckpro)
     trainingSet, testSet = splitdataset(dataset, splitRatio)
     print('Split {0} rows into train={1} and test={2} rows').format(len(dataset), len(trainingSet), len(testSet))
     # prepare model
@@ -345,9 +440,12 @@ def main():
     # test model
     predictions = getPredictions(summaries, testSet, ckpro)
     accuracy = getAccuracy(testSet, predictions)
-    print("input_variable:type")
-    print("Lable:reason")
-    print('Accuracy: {0}%').format(accuracy)
-
+    print('--> Input_variable:{0}').format(sys.argv[1])
+    print('--> Lable:{0}').format(sys.argv[2])
+    print('-- Accuracy: {0}% --').format(accuracy)
+    print('################### Decision Tree ###################')
+    print(' ')
 
 main()
+    
+  
